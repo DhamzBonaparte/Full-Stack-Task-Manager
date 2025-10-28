@@ -26,7 +26,7 @@ export default function Main() {
   const getItems = async () => {
     setLoading(true);
     try {
-      const values = await axios.get("http://localhost:3000/api/tasks");
+      const values = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`);
       setTask(values.data.data);
     } catch (error) {
       console.log(error);
@@ -42,7 +42,7 @@ export default function Main() {
   async function handleAdd() {
     setLoading(true);
     try {
-      await axios.post("http://localhost:3000/api/tasks", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, {
         task: now,
       });
       setNow("");
@@ -55,7 +55,7 @@ export default function Main() {
   }
 
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:3000/api/tasks/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`);
     getItems();
   }
 
@@ -63,7 +63,7 @@ export default function Main() {
     setEdit(true);
     setEditLoading(true);
     try {
-      const value = await axios.get(`http://localhost:3000/api/tasks/${id}`);
+      const value = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`);
       setEditTask(value.data.data);
     } catch (err) {
       console.log(err);

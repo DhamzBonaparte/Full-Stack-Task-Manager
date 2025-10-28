@@ -22,7 +22,7 @@ export default function Edit({
 
   async function handleUpdate() {
     try {
-      await axios.patch(`http://localhost:3000/api/tasks/${editTask._id}`, {
+      await axios.patch(`${import.meta.env.VITE_API_URL}/api/tasks/${editTask._id}`, {
         task: update,
         date: new Date().toISOString(),
         status: isDone ? "done" : "pending",
