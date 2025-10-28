@@ -9,7 +9,7 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-  origin:"task-manager-sulav.netlify.app",
+  origin:"https://task-manager-sulav.netlify.app",
   credentials:true
 }));
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
