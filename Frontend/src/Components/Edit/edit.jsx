@@ -35,10 +35,6 @@ export default function Edit({
     setIsDone(false);
   }
 
-  function handleChange() {
-    setIsDone(!isDone);
-  }
-
   function handleCancel() {
     setIsDone(false);
     setEdit(false);

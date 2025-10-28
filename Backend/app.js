@@ -1,18 +1,15 @@
 const express = require("express");
+const path = require("path");
 const routes = require("./Router/route");
 const app = express();
 const connect = require("./Database/connect");
 const cors = require("cors");
-// require("express-async-errors")
 require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use((err,req,res,next)=>{
-    console.error(err.message);
-    res.status(400).json({error:err.message})
-})
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 
 app.use("/api/tasks", routes);
 
